@@ -30,7 +30,6 @@ public class HomePage {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(popup));
 		dismiss_popup.click();
-//		Dimension
 
 	}
 
