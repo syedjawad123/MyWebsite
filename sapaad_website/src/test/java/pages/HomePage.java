@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,7 @@ public class HomePage {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(popup));
 		dismiss_popup.click();
+//		Dimension
 
 	}
 
