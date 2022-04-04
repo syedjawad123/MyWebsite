@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +19,7 @@ public class HomePage {
 	WebElement try_free_button;
 	@FindBy(xpath = "(//a[contains(text(),'Schedule a Demo')])[1]")
 	WebElement btn_scheduledemo;
+	@FindBy(xpath = "(//a[contains(text(),'Pricing')])[1]") WebElement Pricing;
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -30,7 +30,7 @@ public class HomePage {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(popup));
 		dismiss_popup.click();
-//Dimension
+
 	}
 
 	public void click_try_free() {
@@ -42,5 +42,8 @@ public class HomePage {
 		JavascriptExecutor js= (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();",btn_scheduledemo);
 	
+	}
+	public void pricingpage() {
+		Pricing.click();
 	}
 }
