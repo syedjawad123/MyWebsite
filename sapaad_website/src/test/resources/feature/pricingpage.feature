@@ -1,5 +1,6 @@
 Feature: Verify the functionality of pricing page
 
+  @test
   Scenario: User selects a monthly plan
     Given user is on homepage
     When User click on pricing it should take to pricing page
@@ -8,6 +9,7 @@ Feature: Verify the functionality of pricing page
     And click on try free
     Then user should be taken to trail page
 
+  @tester
   Scenario: User selects a yearly plan
     Given user is on homepage
     When User click on pricing it should take to pricing page

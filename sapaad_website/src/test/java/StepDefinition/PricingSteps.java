@@ -20,17 +20,17 @@ public class PricingSteps {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors", "--silent");
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www-review.sapaad.com");
 		driver.getTitle();
+		home = new HomePage(driver);
 		home.dismisspopupmodal();
 	
 	}
 
 	@When("User click on pricing it should take to pricing page")
 	public void user_click_on_pricing_it_should_take_to_pricing_page() {
-		home = new HomePage(driver);
 		home.pricingpage();
 	 	String tilepricing = driver.getTitle();
 	 	if(tilepricing.equals("Pricing - Sapaad")) {
@@ -62,6 +62,7 @@ public class PricingSteps {
 
 	@And("user toggles the button on for yearly plan it should show billed monthly")
 	public void user_toggles_the_button_on_for_yearly_plan_it_should_show_billed_monthly() {
+		pricing = new PricingPage(driver);
 		pricing.user_selects_yearly_plan();
 	}
 
