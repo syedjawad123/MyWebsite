@@ -94,6 +94,6 @@ public class SapaadTrailPage{
 		 String Childwinow = it.next();
 		 driver.switchTo().window(Childwinow);
 		 System.out.println(driver.getCurrentUrl());
-		
+//		
 	}
 }
