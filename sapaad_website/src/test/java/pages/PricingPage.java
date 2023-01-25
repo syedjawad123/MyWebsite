@@ -16,9 +16,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PricingPage {
+import base.Config;
 
-	WebDriver driver;
+public class PricingPage extends Config{
+
 	@FindBy(xpath = "(//a[contains(text(),'Try for free')])[1]")
 	WebElement Try_top_button;
 	@FindBy(xpath = "//input[starts-with(@type,'range')]")

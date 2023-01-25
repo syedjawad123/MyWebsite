@@ -10,8 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SapaadTrailPage{
-	WebDriver driver;
+import base.Config;
+
+public class SapaadTrailPage extends Config{
 	@FindBy(id = "your-email")
 	WebElement txt_email;
 	@FindBy(id = "step-one-btn")

@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ScheduledemoPage {
+import base.Config;
+
+public class ScheduledemoPage extends Config {
 	WebDriver driver;
 	@FindBy(xpath = "//select[@name='your-role']")
 	WebElement roledropdown;

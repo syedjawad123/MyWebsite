@@ -1,30 +1,15 @@
 package StepDefinition;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
+import base.Config;
 import io.cucumber.java.en.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 import pages.SapaadTrailPage;
 
-public class userapplieswithsameemail {
-	public WebDriver driver;
-	HomePage home;
-	SapaadTrailPage trail;
+public class userapplieswithsameemail extends Config{
+	HomePage home = new HomePage(driver);
+	SapaadTrailPage trail = new SapaadTrailPage(driver);
 	@Given("User is on sapaad Homepage")
 	public void user_is_on_sapaad_homepage() {
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors", "--silent");
-		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		driver.get("https://www-review.sapaad.com");
-		home = new HomePage(driver);
 		home.dismisspopupmodal();
 	}
 
@@ -35,7 +20,6 @@ public class userapplieswithsameemail {
 
 	@And("^I enter existing (.*) address$")
 	public void i_enter_existing_email_address(String email) {
-		trail = new SapaadTrailPage(driver);
 		trail.enter_email_Id(email);
 		
 	}

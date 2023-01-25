@@ -7,7 +7,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/feature", glue = { "StepDefinition" }, monochrome = true, plugin = {
+@CucumberOptions(features = "src/test/resources/feature", glue = { "StepDefinition","Hooks" }, monochrome = true, plugin = {
 		"pretty", "html:target/HtmlReports/index.html", "json:target/Jsonreports/report.json",
 		"junit:target/JunitReports/report.xml" }
 

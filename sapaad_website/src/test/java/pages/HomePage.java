@@ -9,35 +9,44 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
+import base.Config;
 
-	public WebDriver driver;
+public class HomePage extends Config{
+
 	@FindBy(xpath = "//div[@class='d-none d-md-block']")
-	WebElement popup;
+	private WebElement popup;
 	@FindBy(xpath = "(//span[contains(text(),'×')])[3]")
-	WebElement dismiss_popup;
+ 	private WebElement dismiss_popup;
 	@FindBy(xpath = "(//a[contains(text(),'Try for free')])[1]")
-	WebElement try_free_button;
+	private WebElement try_free_button;
 	@FindBy(xpath = "(//a[contains(text(),'Schedule a Demo')])[1]")
-	WebElement btn_scheduledemo;
+	private WebElement btn_scheduledemo;
 	@FindBy(xpath = "(//a[contains(text(),'Pricing')])[1]") WebElement Pricing;
 
 	public HomePage(WebDriver driver) {
-		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
 	public void dismisspopupmodal() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.elementToBeClickable(popup));
-		dismiss_popup.click();
+		try {
+			Thread.sleep(5000);
+			dismiss_popup.click();
+		} catch (InterruptedException e) {
+			System.out.println("AWWWW exception occured");
+			e.printStackTrace();
+		}
+		
 
 	}
 
 	public void click_try_free() {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(try_free_button));
-		try_free_button.click();
+		try {
+			Thread.sleep(5000);
+			try_free_button.click();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	public void click_scheduledemo() {
 		JavascriptExecutor js= (JavascriptExecutor)driver;
@@ -47,7 +56,7 @@ public class HomePage {
 	public void pricingpage() {
 		Actions a = new Actions(driver);
 		a.moveToElement(Pricing).perform();
-		Pricing.click();
+		a.click(Pricing).perform();
 	}
 }
 //

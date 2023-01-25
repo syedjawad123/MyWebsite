@@ -1,32 +1,17 @@
 package StepDefinition;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
+import base.Config;
 import io.cucumber.java.en.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 import pages.SapaadTrailPage;
 
-public class trail {
+public class trail extends Config{
 
-	WebDriver driver;
-	HomePage home;
-	SapaadTrailPage trail;
+	HomePage home = new HomePage(driver);
+	SapaadTrailPage trail = new SapaadTrailPage(driver);
 
 	@Given("User is on sapaad homepage")
 	public void user_is_on_sapaad_homepage() {
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors", "--silent");
-		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		driver.get("https://www-review.sapaad.com");
-		home = new HomePage(driver);
 		home.dismisspopupmodal();
 	}
 
@@ -38,7 +23,6 @@ public class trail {
 
 	@And("^I enter a valid (.*) address and click on continue$")
 	public void i_enter_a_valid_address_and_click_on_continue(String email) {
-		trail = new SapaadTrailPage(driver);
 		trail.enter_email_Id(email);
 	}
 

@@ -10,5 +10,5 @@ Feature: User applies for a demo
     Then User gets a message thank you for your interest
 
     Examples: 
-      | name     | email              | restaurant  | phone      |
+      | name     | email                 | restaurant  | phone      |
       | SapaadQA | sapaadQ121A@gmail.com | Sapaad cafe | 2313121231 |

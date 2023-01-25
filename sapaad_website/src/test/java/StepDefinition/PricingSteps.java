@@ -2,29 +2,17 @@ package StepDefinition;
 
 
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
+import base.Config;
 import io.cucumber.java.en.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 import pages.PricingPage;
 
-public class PricingSteps {
-	public WebDriver driver;
-	HomePage home;
-	PricingPage pricing;
+public class PricingSteps extends Config{
+	
+	HomePage home = new HomePage(driver);
+	PricingPage pricing = new PricingPage(driver);
 	@Given("user is on homepage")
 	public void user_is_on_homepage() {
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors", "--silent");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://www-review.sapaad.com");
-		driver.getTitle();
-		home = new HomePage(driver);
 		home.dismisspopupmodal();
 	
 	}
