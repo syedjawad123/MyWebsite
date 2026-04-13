@@ -11,54 +11,45 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.Config;
 
-public class HomePage extends Config{
+public class HomePage extends Config {
 
 	@FindBy(xpath = "//div[@class='d-none d-md-block']")
 	private WebElement popup;
-	@FindBy(xpath = "(//span[contains(text(),'×')])[3]")
- 	private WebElement dismiss_popup;
+	@FindBy(xpath = "(//span[contains(text(),'ï¿½')])[3]")
+	private WebElement dismiss_popup;
 	@FindBy(xpath = "(//a[contains(text(),'Try for free')])[1]")
 	private WebElement try_free_button;
 	@FindBy(xpath = "(//a[contains(text(),'Schedule a Demo')])[1]")
 	private WebElement btn_scheduledemo;
-	@FindBy(xpath = "(//a[contains(text(),'Pricing')])[1]") WebElement Pricing;
+	@FindBy(xpath = "(//a[contains(text(),'Pricing')])[1]")
+	WebElement Pricing;
 
 	public HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 
 	public void dismisspopupmodal() {
-		try {
-			Thread.sleep(5000);
-			dismiss_popup.click();
-		} catch (InterruptedException e) {
-			System.out.println("AWWWW exception occured");
-			e.printStackTrace();
-		}
-		
-
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(dismiss_popup)).click();
 	}
 
 	public void click_try_free() {
-		try {
-			Thread.sleep(5000);
-			try_free_button.click();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(try_free_button)).click();
 	}
+
 	public void click_scheduledemo() {
-		JavascriptExecutor js= (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();",btn_scheduledemo);
-	
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", btn_scheduledemo);
+
 	}
+
 	public void pricingpage() {
 		Actions a = new Actions(driver);
 		a.moveToElement(Pricing).perform();
 		a.click(Pricing).perform();
-		//hello commited first changes
-		//A new change is updated
+		// hello commited first changes
+		// A new change is updated
 	}
 }
 //
